@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-// import 'package:image_picker/image_picker.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:sanlam/callback/click_listener.dart';
 import 'package:sanlam/ui/screen/base/titlable_widget.dart';
 import 'package:sanlam/ui/widget/button/custom_circle_button.dart';
@@ -134,7 +134,12 @@ class _Declaration5ScreenState extends State<Declaration5Screen>
   void openCamera() async{
     /*var picture = await ImagePicker.pickImage(
       source: ImageSource.camera,
+      maxHeight: 700,
+      maxWidth: 500
     );*/
+    final ImagePicker _picker = ImagePicker();
+    // Capture a photo
+    final XFile photo = await _picker.pickImage(source: ImageSource.camera);
     dev.log('open camera');
   }
 
@@ -142,6 +147,10 @@ class _Declaration5ScreenState extends State<Declaration5Screen>
     /*var gallery = await ImagePicker.pickImage(
       source: ImageSource.gallery,
     );*/
+    final ImagePicker _picker = ImagePicker();
+
+    // Pick an image
+    final XFile image = await _picker.pickImage(source: ImageSource.gallery);
     dev.log('open gallery');
   }
 
